@@ -1,103 +1,181 @@
-import Image from "next/image";
-
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@/components/ui/table";
+import { Pencil, Trash2 } from "lucide-react";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 export default function Home() {
+  const person = [
+    {
+      name: "Apple",
+      location: "Philippines",
+      religion: "Hindu",
+      age: 20,
+      Height: 170,
+      Weight: 60,
+      Gender: "Male",
+    },
+    {
+      name: "Orange",
+      location: "Philippines",
+      religion: "Hindu",
+      age: 20,
+      Height: 180,
+      Weight: 60,
+      Gender: "Male",
+    },
+  ];
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="justify-center w-full h-screen bg-white p-1">
+      <h1 className="text-xl font-bold text-center ">CRUD WITH MONGODB</h1>
+      <div className="flex justify-end">
+        <Dialog>
+          <ScrollArea className="sm:max-w-[500px] sm:max-h-[600px]">
+            <form>
+              <DialogTrigger asChild>
+                <button className="bg-blue-500 text-white  hover:bg-blue-600 border cursor-pointer p-2 rounded-md m-2">
+                  Add Person
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px] sm:max-h-[700px]">
+                <DialogTitle className="text-lg font-bold uppercase text-center">
+                  Add Person
+                </DialogTitle>
+                <div>
+                  <label className="text-sm font-medium">Name</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Location</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Religion</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Age</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Height</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Weight</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Gender</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-md border border-black p-1
+                    "
+                  />
+                </div>
+                <DialogFooter className="space-x-2 items-center justify-center ">
+                  <DialogClose className=" border p-1 rounded-md bg-red-600 text-white hover:bg-red-800 px-2">
+                    cancel
+                  </DialogClose>
+                  <Button
+                    className="border-2  rounded-md bg-blue-600 text-white hover:bg-blue-800 "
+                    type="submit"
+                  >
+                    Add
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </form>
+          </ScrollArea>
+        </Dialog>
+      </div>
+      <Table className="border border-black rounded-md shadow-md">
+        <TableHeader className="bg-yellow-500">
+          <TableRow>
+            <TableHead className="text-white font-bold uppercase">
+              name
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              location
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              religion
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              age
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              Height
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              Weight
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              Gender
+            </TableHead>
+            <TableHead className="text-white font-bold uppercase">
+              Action
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {person.map((item) => (
+            <TableRow className="bg-white" key={item.name}>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.location}</TableCell>
+              <TableCell>{item.religion}</TableCell>
+              <TableCell>{item.age}</TableCell>
+              <TableCell>{item.Height}</TableCell>
+              <TableCell>{item.Weight}</TableCell>
+              <TableCell>{item.Gender}</TableCell>
+              <TableCell className=" space-x-2">
+                <Button className="bg-blue-500 text-white  hover:bg-blue-600 border cursor-pointer">
+                  <Pencil />
+                </Button>
+                <Button className="bg-red-500  text-white  hover:bg-red-600 border cursor-pointer">
+                  <Trash2 />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }
