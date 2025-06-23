@@ -195,7 +195,7 @@ export default function Home() {
                   type="submit"
                   className="border-2 rounded-md bg-blue-600 text-white hover:bg-blue-800"
                 >
-                  {editingId ? "Update" : "Add"}
+                  {editingId ? "Update" : "Save"}
                 </Button>
               </DialogFooter>
             </form>
